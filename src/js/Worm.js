@@ -10,9 +10,12 @@ class Worm {
         this.bind();
         this.createMesh();
         this.speed = Math.random() / 2 + 0.1
+        this.colorR;
     }
 
     createMesh() {
+        this.colorR = new THREE.Color(0xffffff);
+
         this.uniforms = {
             colorB: {
                 type: 'vec3',
@@ -20,7 +23,7 @@ class Worm {
             },
             colorA: {
                 type: 'vec3',
-                value: new THREE.Color(0xACB6FF)
+                value: this.colorR
             },
             u_time: {
                 type: 'f',
@@ -28,7 +31,7 @@ class Worm {
             }
         }
 
-        this.mesh = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, this.height, 20, 100), new THREE.ShaderMaterial({
+        this.mesh = new THREE.Mesh(new THREE.CylinderGeometry(1, 0.001, this.height, 20, 100), new THREE.ShaderMaterial({
             uniforms: this.uniforms,
             transparent: true,
             fragmentShader: glsl.file("../shaders/frag.glsl"),
@@ -37,10 +40,12 @@ class Worm {
         }));
         this.mesh.position.set(
             (Math.random() - 0.5) * 60,
-            (Math.random() - 0.5) * 10,
+            (Math.random() - 0.5) * 30,
             (Math.random() - 0.5) * 5
         )
         this.mesh.rotateX(Math.PI / 2)
+        this.mesh.rotateZ(Math.PI / 2)
+
     }
 
     move() {

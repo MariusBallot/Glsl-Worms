@@ -14,12 +14,12 @@ class Worm {
     }
 
     createMesh() {
-        this.colorR = new THREE.Color(0xffffff);
+        this.colorR = new THREE.Color(0xff88ff);
 
         this.uniforms = {
             colorB: {
                 type: 'vec3',
-                value: new THREE.Color(0x151515)
+                value: new THREE.Color(0x111199)
             },
             colorA: {
                 type: 'vec3',
@@ -39,8 +39,8 @@ class Worm {
             side: THREE.DoubleSide,
         }));
         this.mesh.position.set(
-            (Math.random() - 0.5) * 60,
-            (Math.random() - 0.5) * 30,
+            (Math.random() - 0.5) * 50,
+            (Math.random() - 0.5) * 50,
             (Math.random() - 0.5) * 5
         )
         this.mesh.rotateX(Math.PI / 2)
@@ -62,5 +62,5 @@ class Worm {
 
 export {
     Worm as
-    default
+        default
 }
